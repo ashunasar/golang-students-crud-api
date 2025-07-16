@@ -12,13 +12,14 @@ import (
 
 	"github.com/ashunasar/golang-students-crud-api/internal/config"
 	"github.com/ashunasar/golang-students-crud-api/internal/http/handlers/student"
-	"github.com/ashunasar/golang-students-crud-api/internal/storage/sqlite"
+	"github.com/ashunasar/golang-students-crud-api/internal/storage/postgres"
 )
 
 func main() {
 	cfg := config.MustLoad()
 
-	storage, err := sqlite.New(cfg)
+	// use sqlite for sqlite and use postgres to switch database
+	storage, err := postgres.New(cfg)
 
 	if err != nil {
 		log.Fatal(err)
