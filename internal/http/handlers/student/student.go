@@ -42,7 +42,7 @@ func New(storage storage.Storage) http.HandlerFunc {
 			return
 		}
 
-		response.WriteJson(w, http.StatusCreated, map[string]string{"success": "OK", "id": strconv.FormatInt(lastId, 10)})
+		response.WriteJson(w, http.StatusCreated, response.GeneralResponse(map[string]string{"id": strconv.FormatInt(lastId, 10)}))
 	}
 }
 func GetStudentById(storage storage.Storage) http.HandlerFunc {
@@ -65,7 +65,7 @@ func GetStudentById(storage storage.Storage) http.HandlerFunc {
 			return
 		}
 
-		response.WriteJson(w, http.StatusCreated, student)
+		response.WriteJson(w, http.StatusCreated, response.GeneralResponse(student))
 	}
 }
 
@@ -124,7 +124,7 @@ func UpdateStudent(storage storage.Storage) http.HandlerFunc {
 			return
 		}
 
-		response.WriteJson(w, http.StatusOK, student)
+		response.WriteJson(w, http.StatusOK, response.GeneralResponse(student))
 
 	}
 
@@ -150,6 +150,6 @@ func DeleteStudent(storage storage.Storage) http.HandlerFunc {
 			return
 		}
 
-		response.WriteJson(w, http.StatusOK, map[string]int64{"id": student})
+		response.WriteJson(w, http.StatusOK, response.GeneralResponse(map[string]int64{"id": student}))
 	}
 }
