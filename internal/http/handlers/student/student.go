@@ -80,7 +80,7 @@ func GetStudents(storage storage.Storage) http.HandlerFunc {
 			return
 		}
 
-		response.WriteJson(w, http.StatusOK, student)
+		response.WriteJson(w, http.StatusOK, response.GeneralResponse(student))
 	}
 }
 
